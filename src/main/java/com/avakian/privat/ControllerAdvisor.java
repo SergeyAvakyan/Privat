@@ -1,0 +1,15 @@
+package com.avakian.privat;
+
+import com.avakian.privat.exception.NotFoundException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+
+@ControllerAdvice
+public class ControllerAdvisor {
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<Void> handleConfirmUserRegistrationError(NotFoundException ex) {
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+}
